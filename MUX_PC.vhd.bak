@@ -1,0 +1,17 @@
+Library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+Entity MUX_PC is
+Port(	A,B,C,D : in std_logic_vector (31 downto 0);
+	PCSel : in std_logic_vector(1 downto 0);
+	S : out std_logic_vector (31 downto 0));
+end entity;
+
+architecture arch_MUX_PC of MUX_PC is
+begin
+S<= A when COM="00" else,	--ALU
+    B when COM="01" else,	--ALUOUT
+    C when COM="10" else,	--LR
+    D when COM="11";			--VIC
+end architecture;
